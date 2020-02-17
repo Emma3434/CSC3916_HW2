@@ -94,13 +94,13 @@ router.post('/signin', function(req, res) {
 router.get('/movies', function(req, res)
 {
     //res.status(200).send({msg: 'GET movies',headers: req.headers, query: req.query, env: process.env.UNIQUE_KEY})
-    res.json({status: 200, msg: 'GET movies',headers: headers: req.headers, query: req.query, env: process.env.UNIQUE_KEY})
+    res.json({status: 200, msg: 'GET movies',headers: {headers: req.headers}, query: req.query, env: process.env.UNIQUE_KEY})
 });
 
 router.post('/movies', function(req,res)
 {
     //res.status(200).send({msg: 'movie saves', headers: req.body.headers, query: req.body.query, env: process.env.UNIQUUE_KEY})
-    res.json({status: 200, msg: 'movie saves',headers: headers: req.headers, query: req.query, env: process.env.UNIQUE_KEY})
+    res.json({status: 200, msg: 'movie saves',headers: {headers: req.headers}, query: req.query, env: process.env.UNIQUE_KEY})
 });
 
 app.use('/', router);
