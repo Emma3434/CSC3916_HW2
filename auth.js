@@ -19,7 +19,7 @@ var BasicStrategy = require('passport-http').BasicStrategy;
 
 passport.use(new BasicStrategy(
     function(username, password, done) {
-        db.findOne({ username: username }, function (err, user) {
+        db.findOne({username: req.body.username}, function (err, user) {
             if (err) { return done(err); }
             if (!user) { return done(null, false); }
             if (!user.validPassword(password)) { return done(null, false); }
