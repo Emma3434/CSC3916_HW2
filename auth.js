@@ -2,7 +2,7 @@
 var passport = require('passport');
 var BasicStrategy = require('passport-http').BasicStrategy;
 
-passport.use(new BasicStrategy(
+/*passport.use(new BasicStrategy(
     function(username, password, done) {
         //hard coded
         //var user = { name: "testuser" };
@@ -17,6 +17,16 @@ passport.use(new BasicStrategy(
             return done(null, false);
         }
     }
-));
+));*/
 
+passport.use(new BasicStrategy(
+    function(username, password, done) {
+        User.findOne({ username: username }, function (err, user) {
+            if (err) { return done(err); }
+            if (!user) { return done(null, false); }
+            if (!user.validPassword(password)) { return done(null, false); }
+            return done(null, user);
+        });
+    }
+));
 exports.isAuthenticated = passport.authenticate('basic', { session : false });
