@@ -5,10 +5,8 @@ var BasicStrategy = require('passport-http').BasicStrategy;
 /*passport.use(new BasicStrategy(
     function(username, password, done) {
         //hard coded
-        //var user = { name: "testuser" };
-        var user = db.findOne(req.body.username)
-        //if (username == user.name && password == "cu")
-        if(req.body.password == user.password)
+        var user = { name: "testuser" };
+        if (username == user.name && password == "cu")
         {
             return done(null, user);
         }
@@ -21,7 +19,7 @@ var BasicStrategy = require('passport-http').BasicStrategy;
 
 passport.use(new BasicStrategy(
     function(username, password, done) {
-        User.findOne({ username: username }, function (err, user) {
+        db.findOne({ username: username }, function (err, user) {
             if (err) { return done(err); }
             if (!user) { return done(null, false); }
             if (!user.validPassword(password)) { return done(null, false); }
