@@ -17,6 +17,9 @@ var BasicStrategy = require('passport-http').BasicStrategy;
     }
 ));*/
 
+console.log(passport);
+console.log(BasicStrategy);
+
 passport.use(new BasicStrategy(
     function(username, password, done) {
         var user = db.findOne(username)
