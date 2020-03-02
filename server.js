@@ -145,6 +145,10 @@ router.delete('/movies', authController.isAuthenticated, function(req,res)
     res.send({status: 200, message: 'movie deleted', headers: {headers: req.headers}, query: req.query, env: process.env.UNIQUE_KEY})
 })
 
+router.patch('/movies', function(req, res) {
+    res.json({msg: 'ERROR: doesn’t support the HTTP method'});
+});
+
 app.use('/', router);
 app.listen(process.env.PORT || 8080);
 
