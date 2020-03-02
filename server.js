@@ -108,6 +108,20 @@ router.post('/signin', function(req, res) {
         };
 });
 
+// other methods for signin
+router.get('/signin', function(req, res) {
+    res.json({msg: 'ERROR: doesn’t support the HTTP method'});
+});
+router.put('/signin', function(req, res) {
+    res.json({msg: 'ERROR: doesn’t support the HTTP method'});
+});
+router.delete('/signin', function(req, res) {
+    res.json({msg: 'ERROR: doesn’t support the HTTP method'});
+});
+router.patch('/signin', function(req, res) {
+    res.json({msg: 'ERROR: doesn’t support the HTTP method'});
+});
+
 router.get('/movies', function(req, res)
 {
     //res.status(200).send({msg: 'GET movies',headers: req.headers, query: req.query, env: process.env.UNIQUE_KEY})
